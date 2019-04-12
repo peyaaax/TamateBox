@@ -1,0 +1,109 @@
+//Number conversion JAVA program with JOptionPane.
+
+import java.io.*;
+import javax.swing.JOptionPane;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+public class NumberConversion {
+
+	public static void main(String[] args) {
+
+
+
+		BufferedReader dataIn = new BufferedReader(new InputStreamReader(System.in));
+
+		mainLoop: while (true) {
+
+			String Menu = JOptionPane.showInputDialog("MENU\nChoose a number\n1 - Binary to Decimal\n2 - Decimal to Octal\n3 - Octal to Hexadecimal\n4 -  Hexadecimal to Binary\n5 - QUIT");
+
+
+			String BintoDec = ("BINARY TO DECIMAL\n\nEnter a Binary Number");
+			String DectoOctal = ("DECIMAL TO OCTAL\n\nEnter a Decimal Number");
+			String OctaltoHex = ("OCTAL TO HEXADECIMAL\n\nEnter an Octal Number");
+			String HextoBin = ("HEXADECIMAL TO BINARY\n\nEnter a Hexadecimal Number");
+
+
+
+			int choice;
+			try {
+			choice = Integer.parseInt(Menu);
+			
+			switch (choice) {
+
+			case 1:
+
+				String BinaryNum;
+				String one = JOptionPane.showInputDialog(null, BintoDec);
+				BinaryNum = String.valueOf(one);
+
+				if (BinaryNum.matches("[01]+") && !BinaryNum.startsWith("0")) {
+					String decimalString = Integer.toString(Integer.valueOf(BinaryNum, 2));
+					String Case1 = "The answer is " + (decimalString) + " base 10";
+					JOptionPane.showMessageDialog(null, Case1);
+				} else {
+					JOptionPane.showMessageDialog(null, "Invalid Binary Number!");
+				}
+				break;
+
+			case 2:
+
+				String two = JOptionPane.showInputDialog(null, DectoOctal);
+				String decimalNum = String.valueOf(two);
+				String octalString = Integer.toOctalString(Integer.valueOf(decimalNum));
+				String Case2 = "The answer is " + (octalString) + " base 8";
+				JOptionPane.showMessageDialog(null, Case2);
+				break;
+
+			case 3:
+
+				String three = JOptionPane.showInputDialog(null, OctaltoHex);
+				String octalNum = String.valueOf(three);
+				String HexString = Integer.toHexString(Integer.valueOf(octalNum, 8));
+				String Case3 = "The answer is " + (HexString) + " base 16";
+				JOptionPane.showMessageDialog(null, Case3);
+				break;
+
+			case 4:
+				String four = JOptionPane.showInputDialog(null, HextoBin);
+				String hexNum = String.valueOf(four);
+				String BinString = Integer.toBinaryString(Integer.valueOf(hexNum, 16));
+				String Case4 = "The answer is " + (BinString) + " base 2";
+				JOptionPane.showMessageDialog(null, Case4);
+				break;
+
+			case 5:
+				JOptionPane.showMessageDialog(null, "Goodbye!");
+				break mainLoop;
+
+
+
+			default:
+				String subChoice;
+				String RunAgain = JOptionPane.showInputDialog("INVALID NUMBER!\nType yes to continue.");
+				subChoice = String.valueOf(RunAgain);
+				
+				if ( subChoice.equalsIgnoreCase("yes")) {
+
+					continue mainLoop;
+
+				} else {
+
+					System.exit(0);
+				}
+				break;
+			}
+		}
+			catch (NumberFormatException e) {
+				System.exit(0);
+			}
+
+	}
+
+
+	}
+
+
+}
+
+
